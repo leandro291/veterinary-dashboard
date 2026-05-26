@@ -1,0 +1,75 @@
+body {
+    background-color: rgb(182, 181, 181);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.div1 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario {
+    width: 380px;
+    background-color:white;
+    padding: 35px;
+    border-radius: 20px;
+    border: 5px solid black;
+}
+
+
+.formulario h2 {
+    text-align: center;
+    color: black;
+    padding-bottom: 30px;
+}
+
+.formulario label {
+    display: block;
+    font-weight: bold;
+    padding-top: 12px;
+    padding-bottom: 6px;
+}
+
+.formulario input {
+    width: 94%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
+
+.formulario select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: #967ba2;
+    color: black;
+
+}
+
+.formulario button:hover {
+    background-color: rgb(151, 109, 151);
+}
+
+.formulario p {
+    padding-top: 25px;
+    text-align: center;
+}
+
+.formulario a {
+    color: #454984;
+    font-weight: bold;
+}
