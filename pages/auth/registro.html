@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="/veterinaria/assets/style/auth/style.css">
+</head>
+<body>
+    <div class="div1">
+        <form class="formulario" action="registro.php" method="POST">
+
+            <h2>REGISTRO DE USUARIO</h2>
+
+            <label for="">Usuario:</label>
+            <input type="text" name="usuario" placeholder="Ingrese su usuario">
+
+            <label for="">Contraseña:</label>
+            <input type="password" name="contraseña"  placeholder="Ingrese su contraseña">
+
+            <label for="">Rol:</label>
+                <select name="rol">
+                    <option value="Administrador">Administrador</option>
+                    <option value="Recepcionista">Recepcionista</option>
+                    <option value="Asistente">Asistente</option>
+                    <option value="Limpieza">Limpieza</option>
+                </select>
+            
+            <label for="">Estado:</label>
+                <select name="estado">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+            
+            <button type="submit">Registrar</button>
+
+            <p>Tengo cuenta <a href="/veterinaria/pages/auth/login.html">Inicia sesión</a></p>
+
+        </form>
+    </div>
+    
+
+</body>
+</html>
