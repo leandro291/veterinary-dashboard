@@ -1,0 +1,65 @@
+        <div class="px-6 py-2 border-b border-gray-400/50 flex flex-col">
+            <span class="font-bold">Resumen General</span>
+            <span id="hora_actual">Ultima actualizacion 15/5/2026, 22:59:27</span>
+        </div>
+
+        <div class="px-6 py-8 grid grid-cols-3 gap-8">
+
+            <div class="border border-gray-400/50 rounded-lg h-50 p-6 flex flex-col justify-between bg-white shadow hover:shadow-xl transition duration-300">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-900/80">Pacientes Totales</span>
+                    <div class="bg-slate-600 flex items-center justify-center rounded-xl p-1.5">
+                        <img src="/veterinaria/assets/imgs/logo_patas.webp" class="w-6 h-6 rounded-xl" alt="">
+                    </div>
+                </div>
+                <p class="text-3xl mb-4" id="total_pacientes">999</p>
+            </div>
+
+            <div class="border border-gray-400/50 rounded-lg h-50 p-6 flex flex-col justify-between bg-white shadow hover:shadow-xl transition duration-300">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-900/80">Citas Totales</span>
+                    <div class="bg-slate-600 flex items-center justify-center rounded-xl p-1.5">
+                        <img src="/veterinaria/assets/imgs/logo_calendario.webp" class="w-6 h-6 rounded-xl" alt="">
+                    </div>
+                </div>
+                <p class="text-3xl mb-4" id="total_citas">666</p>
+            </div>
+
+            <div class="border border-gray-400/50 rounded-lg h-50 p-6 flex flex-col justify-between bg-white shadow hover:shadow-xl transition duration-300">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-900/80">Pacientes Criticos</span>
+                    <div class="bg-slate-600 flex items-center justify-center rounded-xl p-1.5">
+                        <img src="/veterinaria/assets/imgs/logo_ritmo-cardiaco.webp" class="w-6 h-6 rounded-xl " alt="">
+                    </div>
+                </div>
+                <p class="text-3xl mb-4" id="total_criticos">333</p>
+            </div>
+
+        </div>
+
+        <div class="px-6 py-8 gap-8 grid grid-cols-2 ">
+
+            <div class="w-full h-auto px-6 py-4 border border-gray-400/50 rounded-lg">
+                <div class="flex flex-col gap-1">
+                    <span class="font-bold">Distribucion de citas</span>
+                    <span class="font-light">Por tipo de servicio</span>
+                </div>
+                <canvas class="mx-auto" id="miGrafico"></canvas>
+            </div>
+            <div class="w-full h-auto px-6 py-4 border border-gray-400/50 rounded-lg">
+                <div class="flex flex-col gap-1">
+                    <span class="font-bold">Citas semalas programadas</span>
+                    <span class="font-light">Evolucion mensual de la clinica</span>
+                </div>
+                <canvas class="" id="linear"></canvas>
+            </div>
+            
+        </div>
+    </main>
+
+</body>
+<script src="/veterinaria/assets/js/home/home_graphics.js"></script>
+<script src="/veterinaria/assets/js/home/home_notices.js"></script>
+
+</html>
+
