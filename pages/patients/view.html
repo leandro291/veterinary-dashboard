@@ -1,0 +1,257 @@
+    <main class="w-full overflow-hidden">
+
+        <div class="px-6 py-2 border-b border-gray-400/50 flex flex-col">
+            <span class="font-bold">Resumen General</span>
+            <span id="hora_actual">Ultima actualizacion 15/5/2026, 22:59:27</span>
+        </div>
+
+        <div class="border border-gray-400/50 p-4 mx-4 my-5 flex flex-col gap-5 rounded-sm">
+            <div class="flex justify-between items-center">
+                <div class="flex flex-col">
+                    <span class="font-bold">Gestion de Pacientes</span>
+                    <span class="text-gray-800/80">Total de pacientes</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="border border-gray-400/50 p-1 rounded-sm text-sm hover:bg-gray-100 cursor-pointer">📥Exportar</button>
+                    <button class="border bg-black text-white p-1 rounded-sm text-sm hover:bg-black/90 cursor-pointer" id="btn-open">➕Nuevo Paciente</button>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <div class="flex-1 bg-gray-100 px-2 py-1 rounded focus-within:focus-within:ring-3 focus-within:ring-gray-500">
+                    <input class="w-full focus:outline-none" type="text" placeholder="Buscar por nombre, dueño o ID....">
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="bg-gray-100 px-2 py-1 rounded">
+                        <select class="w-full focus:outline-none" name="" id="">
+                            <option class="" value="">Todas las especies</option>
+                            <option value="">Perros</option>
+                            <option value="">Gatos</option>
+                            <option value="">Conejos</option>
+                            <option value="">Aves</option>
+                        </select>
+                    </div>
+                    <div class="bg-gray-100 px-2 py-1 rounded">
+                        <select class="w-full focus:outline-none" name="" id="">
+                            <option value="Saludable">Saludable</option>
+                            <option value="En tratamiento">En tratamiento</option>
+                            <option value="Critico">Critico</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full px-4 overflow-y-auto">
+            <table class="w-full px-4 border border-gray-400/50 rounded-sm bg-slate-50 overflow-x-hidden ">
+                <thead class="border-b border-gray-400/50 py-10">
+                    <th class="py-2">Paciente</th>
+                    <th>Especie/Raza</th>
+                    <th>Dueño</th>
+                    <th>Edad</th>
+                    <th>Estado</th>
+                    <th>Fecha Registro</th>
+                    <th></th>
+                </thead>
+                <tbody class="divide-y divide-gray-400/50" id="tabla-pacientes"> 
+                    <tr class="hover:bg-gray-50 transition duration-150">
+                        <!-- Datos recorridos a traves del fetch de la base de datos -->
+                </tbody>
+            </table> 
+
+        </div>
+
+    </main>
+
+    <div class="fixed bg-black/20 backdrop-blur-xs inset-0 hidden items-center justify-center " id="modal">
+        <form action="?page=patients" method="POST" class="bg-white w-[800px] p-8 rounded-xl">
+            <h2 class="text-center text-xl font-bold mb-4">Registro de Nuevo Paciente</h2>
+            <div class="grid grid-cols-2 gap-8 ">
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2">Datos del Dueño</h3>
+
+                    <input type="hidden" name="accion" value="registro">
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">DNI</label>
+                        <input type="number" required name="dni" placeholder="Ej: 12345678" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Nombre</label>
+                        <input type="text" required name="nombre_cliente" placeholder="Ej: Leandro Zahir" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Apellido</label>
+                        <input type="text" required name="apellido_cliente" placeholder="Ej: Rojas Ortega" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Telefono</label>
+                        <input type="text" required name="telefono" placeholder="Ej: 999 222 333" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Direccion</label>
+                        <input type="text" required name="direccion" placeholder="Ej: Av. Ferreñafe 123" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Correo</label>
+                        <input type="email" required name="correo" placeholder="Ej: peine@gmail.com" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2">Datos de la Mascota</h3>
+
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Nombre</label>
+                        <input name="nombre" required type="text" placeholder="Ej: Mia" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Especie</label>
+                        <select name="especie" required placeholder="Ej: Gato" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                            <option value="">Seleccione una especie</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Conejo">Conejo</option>
+                            <option value="Ave">Ave</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Raza</label>
+                        <input name="raza" required type="text" placeholder="Ej: Siames" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Edad</label>
+                        <input name="edad" required type="number" placeholder="Ej: 10 años" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm text-gray-600" for="">Estado</label>
+                        <select name="estado" required class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm" id="">
+                            <option value="Saludable">Saludable</option>
+                            <option value="En tratamiento">En tratamiento</option>
+                            <option value="Critico">Critico</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="flex justify-end mt-5 gap-3">
+                <button type="button" class="hover:bg-gray-100 border border-gray-400 px-5 py-2 rounded-lg cursor-pointer" id="btn-close">Cancelar</button>
+                <button type="submit" class="bg-black text-white hover:bg-black/90 px-5 py-2 rounded-lg cursor-pointer">Enviar datos</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="fixed bg-black/20 backdrop-blur-xs inset-0  items-center justify-center hidden " id="modal_editar">
+        <form action="?page=patients" method="POST" class="bg-white w-[800px] p-8 rounded-xl">
+            <h2 class="text-center text-xl font-bold mb-4">Editar paciente</h2>
+            <div class="grid grid-cols-2 gap-8 ">
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2">Datos del Dueño</h3>
+
+                    <input type="hidden" name="accion" value="editar">
+                    <input type="hidden" name="id" id="edit_id">
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">DNI</label>
+                        <input type="number" name="dni" id="dueno_dni" placeholder="Ej: 12345678" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Nombre</label>
+                        <input type="text" name="nombre_cliente" id="dueno_nombre" placeholder="Ej: Leandro Zahir" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Apellido</label>
+                        <input type="text" name="apellido_cliente" id="dueno_apellido" placeholder="Ej: Rojas Ortega" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Telefono</label>
+                        <input type="text" name="telefono" id="dueno_telefono" placeholder="Ej: 999 222 333" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Direccion</label>
+                        <input type="text" name="direccion" id="dueno_direccion" placeholder="Ej: Av. Canta 123" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Correo</label>
+                        <input type="email" name="correo" id="dueno_correo" placeholder="Ej: peine@gmail.com" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+                    
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-2">Datos de la Mascota</h3>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Nombre</label>
+                        <input id="paciente_nombre" name="nombre" type="text" placeholder="Ej: Zen" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Especie</label>
+                        <select name="especie" id="paciente_especie" placeholder="Ej: Gato" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                            <option value="">Seleccione una especie</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Conejo">Conejo</option>
+                            <option value="Ave">Ave</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Raza</label>
+                        <input id="paciente_raza" name="raza" type="text" placeholder="Ej: Shitzu" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="" class="text-sm text-gray-600">Edad</label>
+                        <input id="paciente_edad" name="edad" type="number" placeholder="Ej: 8 años" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm">
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm text-gray-600" for="">Estado</label>
+                        <select id="paciente_estado" name="estado" class="bg-gray-100 focus:outline-none px-2 py-2 rounded-sm" name="" id="">
+                            <option value="Saludable">Saludable</option>
+                            <option value="En tratamiento">En tratamiento</option>
+                            <option value="Critico">Critico</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+
+
+            </div>
+
+            <div class="flex justify-end mt-5 gap-3">
+                <button type="button" class="hover:bg-gray-100 border border-gray-400 px-5 py-2 rounded-lg cursor-pointer" id="btn-closeEdit">Cancelar</button>
+                <button type="submit" class="bg-black text-white hover:bg-black/90 px-5 py-2 rounded-lg cursor-pointer">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/veterinaria/assets/js/patients/patients_table.js"></script>
+    <script src="/veterinaria/assets/js/patients/patients_modal.js"></script>
+    <script src="/veterinaria/assets/js/patients/patients_delete.js"></script>
+    <script src="/veterinaria/assets/js/patients/patients_edit.js"></script>
+</body>
+</html>
